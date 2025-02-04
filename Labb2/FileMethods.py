@@ -44,9 +44,25 @@ def add_student(json_file):
     with open(json_file, 'w', encoding = 'utf-8-sig') as wfile:
             json.dump(dict_with_json_data, wfile, indent = 4, ensure_ascii = False)
 
+def delete_student(json_file):
+    lastname = input('Ange efternamn för personen som ska tas bort')
+    new_dict ={}
+    with open(json_file, 'r', encoding='utf-8-sig') as jsonf:
+        dict_from_jsonf = json.load(jsonf)
+        del dict_from_jsonf[lastname]
 
+        for key,value in dict_from_jsonf.items():
+            new_dict[key] = value
 
+    with open(json_file, 'w', encoding='utf-8-sig') as wfil:
+        json.dump(new_dict,wfil,indent=4, ensure_ascii=False)
 
+def print_json(json_file):
+    stream_data = open(json_file, 'r', encoding = 'utf-8-sig')
+    load_data_from_stream = json.load(stream_data)
+    output = json.dumps(load_data_from_stream, indent = 4, ensure_ascii=False)
+    stream_data.close()
+    print(output)
 
 
 

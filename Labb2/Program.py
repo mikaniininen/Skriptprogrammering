@@ -21,6 +21,10 @@ def main():
                 FileMethods.originalfile(csv_file, json_file)
             case 2:
                 FileMethods.add_student(json_file)
+            case 3:
+                FileMethods.delete_student(json_file)
+            case 4:
+                FileMethods.print_json(json_file)
             case _:
                 print('Ogiltigt val')
 
