@@ -6,16 +6,16 @@ json_file = 'student_lista.json'
 
 def originalfile(csv_file, json_file):
 
-    #list_of_students = []
- #   columns = []
- #   rows = []
+    list_of_students = []
+    columns = []
+    rows = []
     dict_students = {}
-#    with open(csv_file, 'r', encoding = 'utf-8-sig') as csvfile:
-#        reader_object = csv.reader(csvfile, delimiter = ';')
-#        columns = next(reader_object)
-#
-#        for row in reader_object:
-#            rows.append(row)
+    with open(csv_file, 'r', encoding = 'utf-8-sig') as csvfile:
+        reader_object = csv.reader(csvfile, delimiter = ';')
+        columns = next(reader_object)
+
+        for row in reader_object:
+            rows.append(row)
 
 
     with open(csv_file, encoding = 'utf-8-sig') as csvfile:
