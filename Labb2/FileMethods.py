@@ -7,15 +7,15 @@ json_file = 'student_lista.json'
 def originalfile(csv_file, json_file):
 
     #list_of_students = []
-    columns = []
-    rows = []
+ #   columns = []
+ #   rows = []
     dict_students = {}
-    with open(csv_file, 'r', encoding = 'utf-8-sig') as csvfile:
-        reader_object = csv.reader(csvfile, delimiter = ';')
-        columns = next(reader_object)
-
-        for row in reader_object:
-            rows.append(row)
+#    with open(csv_file, 'r', encoding = 'utf-8-sig') as csvfile:
+#        reader_object = csv.reader(csvfile, delimiter = ';')
+#        columns = next(reader_object)
+#
+#        for row in reader_object:
+#            rows.append(row)
 
 
     with open(csv_file, encoding = 'utf-8-sig') as csvfile:
@@ -64,5 +64,21 @@ def print_json(json_file):
     stream_data.close()
     print(output)
 
+def save_json_to_csv(csv_file, json_file):
+    header_list = []
+    rad_list = []
+    with open(json_file, 'r', encoding = 'utf-8-sig') as jsonf:
+        json_data = json.load(jsonf)
+        for v_json in json_data.values():
+            for k in v_json.keys():
+                if k not in header_list:
+                    header_list.append(k)
+            rad_list.append(v_json.copy())
+    #print(header_list)
+    #print(rad_list)
 
-
+    with open(csv_file, 'w', newline = '', encoding = 'utf-8-sig') as csvfile:
+        skrivarObj = csv.DictWriter(csvfile, fieldnames = header_list)
+        skrivarObj.writeheader()
+        for data in rad_list:
+            skrivarObj.writerow(data)

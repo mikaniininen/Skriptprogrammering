@@ -25,6 +25,8 @@ def main():
                 FileMethods.delete_student(json_file)
             case 4:
                 FileMethods.print_json(json_file)
+            case 5:
+                FileMethods.save_json_to_csv(csv_file, json_file)
             case _:
                 print('Ogiltigt val')
 
